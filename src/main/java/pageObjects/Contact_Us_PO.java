@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 
 public class Contact_Us_PO extends Base_PO{
 
@@ -17,6 +18,12 @@ public class Contact_Us_PO extends Base_PO{
 
     private @FindBy(how = How.XPATH, using = "//textarea[@name='message']")
     WebElement comment_TextField;
+
+    private @FindBy(how = How.XPATH, using = "//input[@value='SUBMIT']")
+    WebElement submit_Button;
+
+    private @FindBy(how = How.XPATH, using = "//div[@id='contact_reply']/h1")
+    WebElement successfulSubmission_Message_Text;
 
     public Contact_Us_PO(){
         super();
@@ -40,5 +47,30 @@ public class Contact_Us_PO extends Base_PO{
 
     public void setUnique_Comment(){
         sendKeys(comment_TextField, "Hello world" + generateRandomString(20));
+    }
+
+    public void setSpecific_FirstName(String firstName){
+        sendKeys(firstName_TextField, firstName);
+    }
+
+    public void setSpecific_LastName(String lastName){
+        sendKeys(lastName_TextField, lastName);
+    }
+
+    public void setSpecific_EmailAddress(String email){
+        sendKeys(emailAddress_TextField, email);
+    }
+
+    public void setSpecific_Comment(String comment){
+        sendKeys(comment_TextField, comment);
+    }
+
+    public void clickOn_Submit_Button(){
+        waitForWebElementAndClick(submit_Button);
+    }
+
+    public void validate_Successful_SubmissionMessage_Text(){
+        waitFor(successfulSubmission_Message_Text);
+        Assert.assertEquals(successfulSubmission_Message_Text.getText(), "Thank You for your Message!");
     }
 }

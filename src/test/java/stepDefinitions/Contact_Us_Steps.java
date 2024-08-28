@@ -46,34 +46,31 @@ public class Contact_Us_Steps extends Base_PO {
 
     @And("I click in the submit button")
     public void i_click_in_the_submit_button() {
-        driver.findElement(By.xpath("//input[@value='SUBMIT']")).click();
+        contact_us_po.clickOn_Submit_Button();
     }
 
     @Then("I should be presented with a successful contact us submission message")
     public void i_should_be_presented_with_a_successful_contact_us_submission_message() {
-        System.out.println("Test7");
-        WebElement contactUs_Submission_Message = driver.findElement(By.xpath("//div[@id='contact_reply']/h1"));
-        Assert.assertEquals(contactUs_Submission_Message.getText(), "Thank You for your Message!");
+        contact_us_po.validate_Successful_SubmissionMessage_Text();
     }
 
     @When("I enter a specific first name {word}")
     public void i_enter_a_specific_first_name(String firstName) {
-        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(firstName);
+        contact_us_po.setSpecific_FirstName(firstName);
     }
 
     @When("I enter a specific last name {word}")
     public void i_enter_a_specific_last_name(String lastName) {
-        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(lastName);
-
+        contact_us_po.setSpecific_LastName(lastName);
     }
 
     @When("I enter a specific email address {word}")
     public void i_enter_a_specific_email_address(String email) {
-        driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
+        contact_us_po.setSpecific_EmailAddress(email);
     }
 
     @When("I enter a specific comments {string}")
     public void i_enter_a_specific_comments(String comment) {
-        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comment);
+        contact_us_po.setSpecific_Comment(comment);
     }
 }
