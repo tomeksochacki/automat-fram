@@ -4,19 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import pageObjects.Base_PO;
 import pageObjects.Contact_Us_PO;
 
 public class Contact_Us_Steps extends Base_PO {
-
-    private WebDriver driver = getDriver();
-
     private Contact_Us_PO contact_us_po;
-    public Contact_Us_Steps(Contact_Us_PO contact_us_po){
+
+    public Contact_Us_Steps(Contact_Us_PO contact_us_po) {
         this.contact_us_po = contact_us_po;
     }
 
@@ -32,7 +26,9 @@ public class Contact_Us_Steps extends Base_PO {
 
     @And("I enter a unique last name")
     public void i_enter_a_unique_last_name() {
-        contact_us_po.setUnique_LastName();;    }
+        contact_us_po.setUnique_LastName();
+        ;
+    }
 
     @And("I enter a unique email address")
     public void i_enter_a_unique_email_address() {

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 
-public class Contact_Us_PO extends Base_PO{
+public class Contact_Us_PO extends Base_PO {
 
     private @FindBy(how = How.XPATH, using = "//input[@name='first_name']")
     WebElement firstName_TextField;
@@ -25,51 +25,51 @@ public class Contact_Us_PO extends Base_PO{
     private @FindBy(how = How.XPATH, using = "//div[@id='contact_reply']/h1")
     WebElement successfulSubmission_Message_Text;
 
-    public Contact_Us_PO(){
+    public Contact_Us_PO() {
         super();
     }
 
-    public void navigateTo_WebDriverUniversity_Contact_Us_Page(){
+    public void navigateTo_WebDriverUniversity_Contact_Us_Page() {
         navigateToUrl("https://www.webdriveruniversity.com/Contact-Us/contactus.html");
     }
 
-    public void setUnique_FirstName(){
+    public void setUnique_FirstName() {
         sendKeys(firstName_TextField, "AutoFN" + generateRandomNumber(5));
     }
 
-    public void setUnique_LastName(){
+    public void setUnique_LastName() {
         sendKeys(lastName_TextField, "AutoLN" + generateRandomNumber(5));
     }
 
-    public void setUnique_EmailAddress(){
+    public void setUnique_EmailAddress() {
         sendKeys(emailAddress_TextField, "AutoEmail" + generateRandomNumber(10) + "@mail.com");
     }
 
-    public void setUnique_Comment(){
+    public void setUnique_Comment() {
         sendKeys(comment_TextField, "Hello world" + generateRandomString(20));
     }
 
-    public void setSpecific_FirstName(String firstName){
+    public void setSpecific_FirstName(String firstName) {
         sendKeys(firstName_TextField, firstName);
     }
 
-    public void setSpecific_LastName(String lastName){
+    public void setSpecific_LastName(String lastName) {
         sendKeys(lastName_TextField, lastName);
     }
 
-    public void setSpecific_EmailAddress(String email){
+    public void setSpecific_EmailAddress(String email) {
         sendKeys(emailAddress_TextField, email);
     }
 
-    public void setSpecific_Comment(String comment){
+    public void setSpecific_Comment(String comment) {
         sendKeys(comment_TextField, comment);
     }
 
-    public void clickOn_Submit_Button(){
+    public void clickOn_Submit_Button() {
         waitForWebElementAndClick(submit_Button);
     }
 
-    public void validate_Successful_SubmissionMessage_Text(){
+    public void validate_Successful_SubmissionMessage_Text() {
         waitFor(successfulSubmission_Message_Text);
         Assert.assertEquals(successfulSubmission_Message_Text.getText(), "Thank You for your Message!");
     }
