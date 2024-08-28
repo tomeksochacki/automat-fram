@@ -4,50 +4,44 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import pageObjects.Base_PO;
+import pageObjects.Contact_Us_PO;
 
-import static driver.DriverFactory.getDriver;
-
-public class Contact_Us_Steps {
+public class Contact_Us_Steps extends Base_PO {
 
     private WebDriver driver = getDriver();
 
-    public String generateRandomNumber(int lenght) {
-        return RandomStringUtils.randomNumeric(lenght);
+    private Contact_Us_PO contact_us_po;
+    public Contact_Us_Steps(Contact_Us_PO contact_us_po){
+        this.contact_us_po = contact_us_po;
     }
-
-    public String generateRandomString(int lenght) {
-        return RandomStringUtils.randomAlphabetic(lenght);
-    }
-
 
     @Given("I asscess the webdriver university contact us page")
     public void i_asscess_the_webdriver_university_contact_us_page() {
-        driver.get("https://www.webdriveruniversity.com/Contact-Us/contactus.html");
+        contact_us_po.navigateTo_WebDriverUniversity_Contact_Us_Page();
     }
 
     @And("I enter a unique first name")
     public void i_enter_a_unique_first_name() {
-        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys("AutoFN" + generateRandomNumber(5));
+        contact_us_po.setUnique_FirstName();
     }
 
     @And("I enter a unique last name")
     public void i_enter_a_unique_last_name() {
-        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys("AutoLN" + generateRandomNumber(5));
-    }
+        contact_us_po.setUnique_LastName();;    }
 
     @And("I enter a unique email address")
     public void i_enter_a_unique_email_address() {
-        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("AutoEmail" + generateRandomNumber(10) + "@mail.com");
+        contact_us_po.setUnique_EmailAddress();
     }
 
     @And("I enter a unique comments")
     public void i_enter_a_unique_comments() {
-        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys("Hello world" + generateRandomString(20));
+        contact_us_po.setUnique_Comment();
     }
 
     @And("I click in the submit button")

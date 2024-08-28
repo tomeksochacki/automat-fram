@@ -5,6 +5,7 @@ Feature: WebDriver University - Login Page
   Background:
     Given I asscess the webdriver university login page
 
+    @login1
   Scenario: Validate Successful Submission - Correct Data
     When I enter a correct username webdriver
     And I enter a correct password webdriver123
